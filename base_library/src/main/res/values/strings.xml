@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">base_library</string>
+
+    <string name="remote_elapsed_time_warm">实际耗时:</string>
+    <string name="remote_elapsed_time_like">超过两秒，请按要求来，实际耗时:</string>
+    <string name="app_update_next_time">下次再说</string>
+    <string name="app_update_now">立即更新</string>
+
+    <string name="fragment_welfare_gold_tip">金币余额</string>
+    <string name="fragment_welfare_sign_tip">签到提醒</string>
+    <string name="fragment_welfare_task_title">每日任务</string>
+    <string name="text_install">检测到您的系统设置里禁止乡音好\n有财安装应用，可以在“系统设置”\n里开启乡音好有财的“安装应用权\n限”，开启权限不会对您的手机有\n任何影响</string>
+    <string name="text_dialog_no_gift">很遗憾，未中奖</string>
+    <string name="gift_collection">收下</string>
+
+
+    <string name="tv_agreement_dialog_content">
+我们非常重视您的隐私保护和个人信息保护。《有财天气用户隐私政策》以及《有财天气用户服务协议》会帮助您了解我们会收集哪些数据、为什么收集这些数据，会利用这些数据做些什么及如何保护这些数据。我们尽量以更清晰、更容易被您理解的方式展现我们的隐私政策，从而希望能够真实地传达我们希望向您传达的信息，并希望您在向我们提供某些信息（其中很可能包括您的个人信息）以及允许我们处理并分享某些信息之前，能够清晰地了解这些信息收集的目的、可能的用途以及其他方面的内容。请您务必认真阅读用户服务协议和隐私政策，在确认充分了解后再使用有财天气产品和服务。
+</string>
+
+    <string name="text_not_get_permission">为保证正常使用App，请开启存储、电话、位置的权限，开启并不会对您有任何影响，请放心使用</string>
+
+    <string name="string_app_update">安装</string>
+
+    <string name="login_dialog_hint">登录状态失效了需要重新登录\n登录成功后看视频赚财运币</string>
+    <string name="string_know">我已知晓</string>
+    <string name="string_dont">不同意</string>
+
+    <string name="update_info">
+        1.更新第一条\n2.更新第二条\n3.更新第三条更新第三条更新第三条\n3.更新第三条更新第三条更新第三条\n3.更新第三条更新第三条更新第三条\n3.更新第三条更新第三条更新第三条
+    </string>
+</resources>

@@ -1,0 +1,131 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/splashGuideCl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.SplashActivity">
+
+        <ImageView
+            android:id="@+id/vBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/appLogo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/appLogoWithImage"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_68"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:paddingStart="@dimen/dp_30"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_30"
+            android:paddingBottom="@dimen/dp_10"
+            android:src="@drawable/launchscreen_logo"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vBottom" />
+
+        <FrameLayout
+            android:id="@+id/adFrame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/appLogo"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_68"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:paddingStart="@dimen/dp_30"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_30"
+            android:paddingBottom="@dimen/dp_10"
+            android:src="@drawable/launchscreen_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adFrame" />
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_12"
+            android:textSize="@dimen/dp_12"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="v2.0.6" />
+
+        <TextView
+            android:id="@+id/tvChannel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_12"
+            android:textColor="@color/text_color_dark"
+            android:textSize="@dimen/dp_12"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="v2.0.6" />
+
+        <TextView
+            android:id="@+id/skipView"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@drawable/background_circle"
+            android:gravity="center"
+            android:text="@string/splash_jump"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/dp_14"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/splashGuideRl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/splashGuideVp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/splashGuideBt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_50"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:background="@drawable/backgroud_e64626_radius_4"
+            android:text="立即体验"
+            android:textColor="@color/color_E64626"
+            android:textSize="@dimen/dp_18"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

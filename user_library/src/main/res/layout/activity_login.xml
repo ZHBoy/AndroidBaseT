@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_12"
+        android:src="@drawable/icon_back_8e" />
+
+    <TextView
+        android:id="@+id/tvHelper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/dp_12"
+        android:text="@string/login_help"
+        android:textColor="@color/text_color_light"
+        android:textSize="@dimen/dp_14" />
+
+    <ImageView
+        android:id="@+id/ivLoginIcon"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_110"
+        android:src="@mipmap/icon_lancher" />
+
+    <TextView
+        android:id="@+id/tvLoginTip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivLoginIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_14"
+        android:gravity="center"
+        android:text="@string/login_tip"
+        android:textColor="@color/text_color_light"
+        android:textSize="@dimen/dp_14" />
+
+    <LinearLayout
+        android:id="@+id/llWxLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLoginTip"
+        android:layout_marginStart="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginTop="@dimen/dp_52"
+        android:layout_marginEnd="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:background="@drawable/backgroud_green_radius_4"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvWxLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/transparent"
+            android:drawableStart="@drawable/login_button_weixin"
+            android:drawablePadding="@dimen/dp_8"
+            android:paddingTop="@dimen/dp_12"
+            android:paddingBottom="@dimen/dp_12"
+            android:text="@string/login_center_with_wx"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_14" />
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/loginingTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="正在登录..."
+            android:visibility="invisible"
+            android:layout_below="@+id/llWxLogin"/>
+
+    <LinearLayout
+        android:id="@+id/llLoginOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvLoginWithPhone"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="1dp"
+            android:background="@color/text_color_dark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_12"
+            android:text="@string/login_other_tip"
+            android:textColor="@color/text_color_dark"
+            android:textSize="@dimen/dp_14" />
+
+        <View
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="1dp"
+            android:background="@color/text_color_dark" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLoginWithPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_14"
+        android:drawableTop="@drawable/login_phone"
+        android:drawablePadding="@dimen/dp_4"
+        android:text="@string/login_with_phone"
+        android:textColor="@color/text_color_dark"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvLoginWithWxRule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:lineSpacingExtra="@dimen/dp_4"
+        android:padding="@dimen/dp_20"
+        android:text="155856625626"
+        android:textSize="@dimen/dp_12" />
+</RelativeLayout>

@@ -1,0 +1,149 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.ychd.ycwwz"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode.toInteger()
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        flavorDimensions "default"
+
+        ndk {
+            // 设置支持的SO库架构(当前市面绝大多数是arm的CPU，而且都是V7架构的了) //'armeabi', 'arm64-v8a'
+            abiFilters 'armeabi-v7a'
+        }
+        packagingOptions {
+
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "c893bb38f1adeb9cba7fd4fd", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+
+    signingConfigs {
+        myConfig {
+            storeFile file("../keystore/ycwwz.jks")
+            storePassword "ycwwz111"
+            keyAlias 'ycwwz'
+            keyPassword "ycwwz111"
+
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+    buildTypes {
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "TLOG", "false"
+            // Zipalign优化
+            zipAlignEnabled true
+
+            minifyEnabled true
+            signingConfig signingConfigs.myConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled true
+            debuggable true
+
+            signingConfig signingConfigs.myConfig
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+
+    productFlavors {
+        demo {}
+        yctq {}
+        yingyongbao {}
+        xiaomi {}
+        oppo {}
+        vivo {}
+        huawei {}
+        meizu {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    kapt "com.alibaba:arouter-compiler:${aRouterCompilerVersion}"
+    // 路由模块
+    api project(':provider_library')
+    // 广告模块
+    api project(':adlibrary')
+    // 开屏模块
+    api project(':splash_library')
+
+
+    // 用户中心模块
+    if (!UserCenterDebug.toBoolean()) {
+        api project(':user_library')
+    }
+
+//    // 天气模块
+//    if (!WeatherDebug.toBoolean()) {
+//        api project(':weather_library')
+//    }
+//
+//    // 天气模块
+//    if (!WelfareDebug.toBoolean()) {
+//        api project(':welfare_library')
+//    }
+//
+//    // 活动模块
+//    if (!ActivityDebug.toBoolean()) {
+//        api project(':activity_library')
+//    }
+//
+//
+//    api project(':web_library')
+//
+
+//
+//    if(!VideoDebug.toBoolean()){
+//        api project(':video_library')
+//    }
+
+
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_44"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/toolbarBackIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topV"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_14"
+            android:src="@drawable/icon_back_8e" />
+
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/dp_80"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dp_18" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/mineCenterLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0_5"
+        android:layout_below="@+id/rlToolbar"
+        android:background="@color/common_background_f3" />
+
+    <com.ychd.ycwwz.web_library.webview.CommonWebView
+        android:id="@+id/wvCommon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mineCenterLine" />
+
+    <FrameLayout
+        android:id="@+id/flVideo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="横屏显示视频"
+        android:visibility="gone" />
+
+</RelativeLayout>

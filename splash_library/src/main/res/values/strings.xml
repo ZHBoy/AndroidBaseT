@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">splash_library</string>
+    <string name="splash_jump">点击跳过</string>
+</resources>

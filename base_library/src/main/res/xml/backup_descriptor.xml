@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- 在SDKVersion 23和更高版本上，应用程序数据将在应用程序安装上自动备份和恢复。
+    考虑添属性‘android:fullBackupContent’以指定一`@xml‘资源，该资源配置哪些文件要备份 -->
+</full-backup-content>

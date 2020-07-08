@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode.toInteger()
+        versionName rootProject.ext.versionName
+
+        consumerProguardFiles 'consumer-rules.pro'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+dependencies {
+
+
+    api(name: 'open_ad_sdk', ext: 'aar')
+    api(name: 'Baidu_MobAds_SDK-release', ext: 'aar')
+    api(name: 'GDTSDK.unionNormal.4.211.1081', ext: 'aar')
+    api files('libs/android-query-full.0.26.7.jar')
+
+    api 'pl.droidsonroids.gif:android-gif-drawable:1.2.6'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    kapt "com.alibaba:arouter-compiler:${aRouterCompilerVersion}"
+
+    implementation project(':provider_library')
+
+}
+
+repositories {
+    mavenCentral()
+}

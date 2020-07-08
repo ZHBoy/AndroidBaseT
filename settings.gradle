@@ -1,0 +1,2 @@
+include ':app', ':base_library', ':provider_library',':adlibrary',':splash_library',':web_library',':user_library'
+rootProject.name='Ycwwz'

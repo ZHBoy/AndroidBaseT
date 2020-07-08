@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:id="@+id/llBg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/backgroud_white_radius_6"
+            android:orientation="vertical">
+
+        <ImageView
+                android:id="@+id/commonCloseIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="@dimen/dp_12"
+                android:src="@drawable/close_dia"
+                android:visibility="invisible" />
+
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_50"
+                android:paddingBottom="@dimen/dp_20">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="@dimen/dp_2"
+                        android:padding="@dimen/dp_10"
+                        android:textColor="@color/text_color_light"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        tools:text="阅读满60分钟" />
+
+                <TextView
+                        android:id="@+id/tvContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/dp_18"
+                        android:lineSpacingExtra="@dimen/dp_8"
+                        android:maxHeight="240dp"
+                        android:textColor="@color/text_color_light"
+                        android:textSize="@dimen/dp_16"
+                        tools:text="获得1次抽奖机会" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_44"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:layout_marginBottom="@dimen/dp_24"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/btLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/dp_24"
+                    android:layout_weight="1"
+                    android:background="@drawable/backgroud_e74723_radius_4"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dp_16"
+                    android:textStyle="bold"
+                    tools:text="继续阅读" />
+
+            <LinearLayout
+                    android:id="@+id/btRightLl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/backgroud_e74723_radius_4"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:id="@+id/btRightIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_4"
+                    android:visibility="gone"
+                        android:src="@drawable/icon_default_header" />
+
+                <TextView
+                        android:id="@+id/btRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dp_16"
+                        android:textStyle="bold"
+                        tools:text="马上抽奖" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+            android:id="@+id/ivTopImg"
+            android:layout_width="@dimen/dp_140"
+            android:layout_height="@dimen/dp_140"
+            android:layout_above="@+id/llBg"
+            android:scaleType="fitStart"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-74dp"
+            android:src="@drawable/popvers_pic" />
+</RelativeLayout>

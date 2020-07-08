@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgroud_white_radius_10"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/vTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/background_border_bottom_gray"
+        android:gravity="center"
+        android:padding="@dimen/dp_12"
+        android:text="发现新版本"
+        android:textColor="@color/text_color_light"
+        android:textSize="@dimen/dp_18"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:id="@+id/llUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vTop"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/tvUpdateInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:padding="@dimen/dp_24"
+            android:text="@string/update_info"
+            android:textColor="@color/text_color_light"
+            android:textSize="@dimen/dp_16"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llUpdateProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llUpdate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_30"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="新版本下载进度"
+            android:textColor="@color/color_2ABB00"
+            android:textSize="@dimen/dp_16" />
+
+        <ProgressBar
+            android:id="@+id/pbUpdateDialog"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_3"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_20"
+            android:max="100"
+            android:progress="0" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvInstall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llUpdate"
+        android:layout_marginLeft="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_30"
+        android:layout_marginBottom="@dimen/dp_30"
+        android:background="@drawable/backgroud_e74723_bottom_right_radius_2"
+        android:gravity="center"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
+        android:text="安装"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_16"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/llUpdateBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llUpdateProgress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_10">
+
+        <TextView
+            android:id="@+id/tvNextTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/app_update_next_time"
+            android:textColor="@color/color_E74723"
+            android:textSize="@dimen/dp_16" />
+
+        <TextView
+            android:id="@+id/tvUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/color_E74723"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/app_update_now"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_16" />
+
+    </LinearLayout>
+</RelativeLayout>

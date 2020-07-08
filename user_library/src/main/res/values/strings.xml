@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">user_library</string>
+
+    <string name="login_help">联系客服</string>
+    <string name="login_tip">正在登录…</string>
+    <string name="login_with_wx">微信登录</string>
+    <string name="login_other_tip">其他登录方式</string>
+    <string name="login_with_phone">绑定手机号</string>
+
+    <string name="login_center_with_phone">绑定手机号，更容易获奖哦</string>
+    <string name="login_with_phone_tip">为了记录中奖情况，及后续快递礼品,请填写你的手机号</string>
+    <string name="login_phone_hint">请输入11位手机号码</string>
+    <string name="login_phone_verify">请输入短信验证码</string>
+    <string name="login_phone_no_verify_tip">没收到验证码？</string>
+    <string name="login_phone_verify_refresh">重新发送</string>
+    <string name="login_phone_verify_tip2">后可重新发送</string>
+
+    <string name="login_center_with_wx">微信一键登录</string>
+    <string name="login_jump">跳过>></string>
+</resources>
