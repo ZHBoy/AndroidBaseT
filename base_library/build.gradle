@@ -119,6 +119,7 @@ dependencies {
     //权限检测 https://github.com/LGD2009/LivePermissions
     api 'com.ftd.livepermissions:livepermissions:1.0.2'
 
+    //oaid
     implementation files('libs/msa_mdid_1.0.13.aar')
 
     //今日头条
@@ -137,5 +138,10 @@ dependencies {
     api 'com.amap.api:location:5.0.0'
 
     api 'jp.wasabeef:glide-transformations:4.0.0'
+
+    api 'com.tencent:mmkv-static:1.2.1'
+
+
+
 
 }
