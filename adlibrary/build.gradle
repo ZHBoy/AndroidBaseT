@@ -50,6 +50,4 @@ dependencies {
 
 }
 
-repositories {
-    mavenCentral()
-}
+

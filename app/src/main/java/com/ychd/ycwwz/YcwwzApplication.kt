@@ -4,6 +4,7 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.baidu.mobads.AdView
 import com.qq.e.comm.managers.GDTADManager
 import com.qq.e.comm.managers.setting.GlobalSetting
+import com.tencent.mmkv.MMKV
 import com.ychd.ycwwz.adlibrary.ttad.ConstantTt
 import com.ychd.ycwwz.adlibrary.ttad.TTAdManagerHolder
 import com.ychd.ycwwz.base_library.BaseApplication
@@ -31,6 +32,10 @@ class YcwwzApplication: BaseApplication(){
 //        GlobalSetting.setChannel(1)
         GlobalSetting.setEnableMediationTool(true)
         AdView.setAppSid(this, "b6050625")
+
+
+        //腾讯mmkv
+        MMKV.initialize(this)
 
     }
 }
