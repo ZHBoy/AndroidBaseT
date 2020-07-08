@@ -1,7 +1,7 @@
 package com.ychd.ycwwz.splash_library.service
 
 import com.ychd.ycwwz.base_library.network.retrofit.ApiConstants
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.*
 
 /**

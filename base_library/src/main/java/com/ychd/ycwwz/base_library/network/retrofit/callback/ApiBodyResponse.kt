@@ -11,9 +11,8 @@ import com.ychd.ycwwz.base_library.BaseApplication
 import com.ychd.ycwwz.base_library.R
 import com.ychd.ycwwz.base_library.utils.TLog
 import com.ychd.ycwwz.base_library.widgets.LoadingDialog
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
-import org.greenrobot.eventbus.EventBus
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.Disposable
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -108,7 +107,7 @@ class ApiBodyResponse<T> constructor(
         var model: ApiErrorModel? = null
         try {
             model =
-                Gson().fromJson(e.response().errorBody()?.charStream(), ApiErrorModel::class.java)
+                Gson().fromJson(e.response()?.errorBody()?.charStream(), ApiErrorModel::class.java)
 
         } catch (e: Exception) {
             TLog.i(e.toString())

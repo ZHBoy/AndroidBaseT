@@ -5,7 +5,6 @@ import android.content.Context
 import com.google.gson.Gson
 import com.ychd.ycwwz.base_library.BaseApplication
 import com.ychd.ycwwz.base_library.R
-import com.ychd.ycwwz.base_library.constants.AccessManager
 import com.ychd.ycwwz.base_library.data.CommonNetBean
 
 import com.ychd.ycwwz.base_library.extend.fromJson
@@ -14,14 +13,12 @@ import com.ychd.ycwwz.base_library.extend.gson
 import com.ychd.ycwwz.base_library.network.retrofit.exception.ApiErrorModel
 import com.ychd.ycwwz.base_library.network.retrofit.exception.ApiErrorType
 import com.ychd.ycwwz.base_library.network.retrofit.http.RequestOption
-import com.ychd.ycwwz.base_library.utils.StringUtils
 import com.ychd.ycwwz.base_library.utils.TLog
 import com.ychd.ycwwz.base_library.utils.ToastUtil
 import com.ychd.ycwwz.base_library.widgets.LoadingDialog
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.Disposable
 
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
-import org.greenrobot.eventbus.EventBus
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -135,7 +132,7 @@ class ApiResponse(
         var model: ApiErrorModel? = null
         try {
             model =
-                Gson().fromJson(e.response().errorBody()?.charStream(), ApiErrorModel::class.java)
+                Gson().fromJson(e.response()?.errorBody()?.charStream(), ApiErrorModel::class.java)
 
         } catch (e: Exception) {
             TLog.i(e.toString())

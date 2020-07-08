@@ -8,7 +8,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import com.ychd.ycwwz.base_library.event.login.LoginEvent
 import com.ychd.ycwwz.base_library.wechat.WXAPISingleton
 import com.ychd.ycwwz.base_library.wechat.WeChatParameterConstant

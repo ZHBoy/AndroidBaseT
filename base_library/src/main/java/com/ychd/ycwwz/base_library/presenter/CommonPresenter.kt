@@ -13,7 +13,7 @@ import com.ychd.ycwwz.base_library.network.retrofit.exception.ApiErrorModel
 import com.ychd.ycwwz.base_library.network.retrofit.http.HttpManager
 import com.ychd.ycwwz.base_library.network.retrofit.http.RequestOption
 import com.ychd.ycwwz.base_library.service.CommonService
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 /**
  *@author :YMH

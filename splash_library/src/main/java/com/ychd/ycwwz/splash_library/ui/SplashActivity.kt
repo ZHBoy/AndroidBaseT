@@ -2,17 +2,21 @@ package com.ychd.ycwwz.splash_library.ui
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.bytedance.sdk.openadsdk.TTSplashAd
+import com.ftd.livepermissions.LivePermissions
+import com.ftd.livepermissions.PermissionResult
 import com.ychd.ycwwz.splash_library.persenter.SplashPresenter
-import com.tbruyelle.rxpermissions2.RxPermissions
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import com.umeng.analytics.AnalyticsConfig
 import com.ychd.ycwwz.adlibrary.baiduad.splash.SplashBuildBD
 import com.ychd.ycwwz.adlibrary.gdt.splash.SplashBuildGDT
@@ -29,7 +33,6 @@ import com.ychd.ycwwz.base_library.extend.clickWithTrigger
 import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.presenter.CommonPresenter
 import com.ychd.ycwwz.base_library.utils.GlideUtils
-import com.ychd.ycwwz.base_library.utils.StatusToolUtils
 import com.ychd.ycwwz.base_library.utils.TLog
 import com.ychd.ycwwz.base_library.utils.timer.RxTimer
 import com.ychd.ycwwz.base_library.utils.timer.TimerListener
@@ -96,10 +99,6 @@ class SplashActivity : BaseActivity(), OnLazyClickListener, SplashContract.View 
     private var reLoadNumber = 0
 
     private var mCommonPresenter: CommonPresenter? = null
-
-    private val rxPermissions: RxPermissions by lazy {
-        RxPermissions(this)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -199,56 +198,60 @@ class SplashActivity : BaseActivity(), OnLazyClickListener, SplashContract.View 
     /**
      * 权限检查
      */
+    @TargetApi(Build.VERSION_CODES.DONUT)
     @SuppressLint("CheckResult")
     private fun checkPermission() {
-        rxPermissions.requestEachCombined(
+        LivePermissions(this).request(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
-        )
-            .subscribe { permission ->
-                when {
-                    permission.granted -> {
-                        mCommonPresenter?.getConfig(
-                            this,
-                            object : BasePresenter.ResponseListener<ConfigBean> {
-                                override fun getDataSuccess(dataBean: ConfigBean) {
-                                    appStatistics()
-                                }
+        ).observe(this, Observer {
+            when (it) {
+                is PermissionResult.Grant -> {  //权限允许
+                    mCommonPresenter?.getConfig(
+                        this,
+                        object : BasePresenter.ResponseListener<ConfigBean> {
+                            override fun getDataSuccess(dataBean: ConfigBean) {
+                                appStatistics()
+                            }
 
-                                override fun getDataError() {
-                                    appStatistics()
-                                }
-                            })
-                    }
-                    permission.shouldShowRequestPermissionRationale -> //拒绝
-                        appAdSplash()
-                    else -> //选择不再询问 需要去设置
-                        PermessonDialog
-                            .Builder(this)
-                            .setTitle(resources.getString(R.string.text_not_get_permission))
-                            .setCancelBtn("暂不开启", object : OnLazyClickListener {
-                                override fun onLazyClick(v: View) {
-                                    appAdSplash()
-                                }
-                            })
-                            .setConfirmBtn("去开启", object : OnLazyClickListener {
-                                override fun onLazyClick(v: View) {
-                                    val intent =
-                                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                    val uri = Uri.fromParts("package", packageName, null)
-                                    intent.data = uri
-                                    startActivity(intent)
-                                    isGetPermissionJump = true//控制跳转到应用中心回来后能
-                                }
+                            override fun getDataError() {
+                                appStatistics()
+                            }
+                        })
+                }
+                is PermissionResult.Rationale -> {  //权限拒绝
+                    appAdSplash()
+                }
+                is PermissionResult.Deny -> {   //权限拒绝，且勾选了不再询问
+//                    it.permissions.forEach {s->
+//                        println("deny:${s}")//被拒绝的权限
+//                    }
+                    PermessonDialog
+                        .Builder(this)
+                        .setTitle(resources.getString(R.string.text_not_get_permission))
+                        .setCancelBtn("暂不开启", object : OnLazyClickListener {
+                            override fun onLazyClick(v: View) {
+                                appAdSplash()
+                            }
+                        })
+                        .setConfirmBtn("去开启", object : OnLazyClickListener {
+                            override fun onLazyClick(v: View) {
+                                val intent =
+                                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                val uri = Uri.fromParts("package", packageName, null)
+                                intent.data = uri
+                                startActivity(intent)
+                                isGetPermissionJump = true//控制跳转到应用中心回来后能
+                            }
 
-                            })
-                            .build().show()
+                        })
+                        .build().show()
                 }
             }
-
+        })
     }
 
     private fun appAdSplash() {

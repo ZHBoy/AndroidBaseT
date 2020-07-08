@@ -5,21 +5,16 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import cn.jpush.android.api.JPushInterface
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.tbruyelle.rxpermissions2.RxPermissions
 import com.ychd.weather.AgreementDialog
-import com.ychd.ycwwz.base_library.BaseApplication.Companion.appContext
 import com.ychd.ycwwz.base_library.base.BaseActivity
 import com.ychd.ycwwz.base_library.base.CustomFragmentStatePagerAdapter
-import com.ychd.ycwwz.base_library.constants.AccessManager
 import com.ychd.ycwwz.base_library.data.AppUpdateBean
 import com.ychd.ycwwz.base_library.event.main.MainActivitySwitchEvent
 import com.ychd.ycwwz.base_library.extend.OnLazyClickListener
 import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.presenter.CommonPresenter
 import com.ychd.ycwwz.base_library.utils.SPUtils
-import com.ychd.ycwwz.base_library.utils.TLog
 import com.ychd.ycwwz.base_library.widgets.AppUpdateDialog
 import com.ychd.ycwwz.provider_library.router.common.RouterApi
 import kotlinx.android.synthetic.main.activity_main.*
@@ -36,10 +31,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
     private var mAgreementDialog: AgreementDialog? = null
 
     private var mCommonPresenter: CommonPresenter? = null
-
-    private val rxPermissions: RxPermissions by lazy {
-        RxPermissions(this)
-    }
 
     override fun resLayout(): Int {
         return R.layout.activity_main

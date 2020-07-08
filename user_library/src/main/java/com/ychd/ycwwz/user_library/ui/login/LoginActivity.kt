@@ -12,17 +12,21 @@ import android.text.style.ClickableSpan
 import android.view.View
 import android.view.animation.Animation
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.tbruyelle.rxpermissions2.RxPermissions
+import com.ftd.livepermissions.LivePermissions
+import com.ftd.livepermissions.PermissionResult
 import com.tencent.mm.opensdk.modelmsg.SendAuth
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import com.ychd.ycwwz.base_library.base.BaseActivity
+import com.ychd.ycwwz.base_library.data.ConfigBean
 import com.ychd.ycwwz.base_library.event.login.LoginEvent
 import com.ychd.ycwwz.base_library.extend.OnLazyClickListener
+import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.utils.CustomAnimatorUtils
 import com.ychd.ycwwz.base_library.utils.MyLinkedMovementMethod
-import com.ychd.ycwwz.base_library.utils.StatusToolUtils
 import com.ychd.ycwwz.base_library.wechat.WXAPISingleton
+import com.ychd.ycwwz.base_library.widgets.PermessonDialog
 import com.ychd.ycwwz.base_library.widgets.common.CommonDialog
 import com.ychd.ycwwz.provider_library.router.common.RouterApi
 import com.ychd.ycwwz.user_library.R
@@ -43,9 +47,6 @@ class LoginActivity : BaseActivity(), LoginContract.View, OnLazyClickListener {
 
     private var dialog: CommonDialog? = null
 
-    private val rxPermissions: RxPermissions by lazy {
-        RxPermissions(this)
-    }
 
     private var presenter: LoginContract.Presenter? = null
 
@@ -172,36 +173,33 @@ class LoginActivity : BaseActivity(), LoginContract.View, OnLazyClickListener {
      */
     @SuppressLint("CheckResult")
     private fun checkPermission() {
-        rxPermissions.requestEachCombined(
+        LivePermissions(this).request(
             Manifest.permission.READ_PHONE_STATE
-        )
-            .subscribe { permission ->
-                when {
-                    permission.granted -> {
-                        toLogin()
-                    }
-                    else -> //选择不再询问 需要去设置
-                    {
-                        dialog = CommonDialog.Builder(this@LoginActivity)
-                            .setCancelAble(false)
-                            .setTitle("温馨提示")
-                            .setMessage(resources.getString(R.string.text_not_get_permission))
-                            .setConfirmBtn("去开启", object : OnLazyClickListener {
-                                override fun onLazyClick(v: View) {
-                                    val intent =
-                                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                                    val uri = Uri.fromParts("package", packageName, null)
-                                    intent.data = uri
-                                    startActivity(intent)
-                                    dialog?.dismiss()
-                                }
-                            }).build()
-                        dialog?.show()
-                    }
+        ).observe(this, Observer {
+            when (it) {
+                PermissionResult.Grant -> {  //权限允许
+                    toLogin()
+                }
+                else -> {
+                    dialog = CommonDialog.Builder(this@LoginActivity)
+                        .setCancelAble(false)
+                        .setTitle("温馨提示")
+                        .setMessage(resources.getString(R.string.text_not_get_permission))
+                        .setConfirmBtn("去开启", object : OnLazyClickListener {
+                            override fun onLazyClick(v: View) {
+                                val intent =
+                                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                val uri = Uri.fromParts("package", packageName, null)
+                                intent.data = uri
+                                startActivity(intent)
+                                dialog?.dismiss()
+                            }
+                        }).build()
+                    dialog?.show()
                 }
             }
-
+        })
     }
 
     override fun onDestroy() {

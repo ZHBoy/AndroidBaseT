@@ -1,6 +1,6 @@
 package com.ychd.ycwwz.splash_library.persenter
 
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.mvp.BaseView
 import com.ychd.ycwwz.splash_library.service.data.SplashBean

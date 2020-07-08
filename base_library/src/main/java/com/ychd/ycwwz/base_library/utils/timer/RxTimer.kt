@@ -1,10 +1,12 @@
 package com.ychd.ycwwz.base_library.utils.timer
 
 import android.annotation.SuppressLint
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
 /**
@@ -13,7 +15,6 @@ import java.util.concurrent.TimeUnit
  *@description :倒计时
  **/
 class RxTimer {
-
 
     private var disposables: CompositeDisposable = CompositeDisposable()
 
@@ -29,10 +30,24 @@ class RxTimer {
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { t: Long -> count - t }
-            .subscribe({ listener?.onSuccess(it) },
-                { listener?.onError(it) },
-                { listener?.onCompleted() },
-                { disposables.add(it) })
+            .subscribe(object :Observer<Long>{
+                override fun onComplete() {
+                    listener?.onCompleted()
+                }
+
+                override fun onSubscribe(d: Disposable?) {
+                    disposables.add(d)
+                }
+
+                override fun onNext(t: Long?) {
+                    listener?.onSuccess(t!!)
+                }
+
+                override fun onError(e: Throwable?) {
+                    listener?.onError(e!!)
+                }
+
+            })
 
     }
 
@@ -47,10 +62,24 @@ class RxTimer {
             .unsubscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { t: Long -> t + 1 }
-            .subscribe({ listener?.onSuccess(it) },
-                { listener?.onError(it) },
-                { listener?.onCompleted() },
-                { disposables.add(it) })
+            .subscribe(object :Observer<Long>{
+                override fun onComplete() {
+                    listener?.onCompleted()
+                }
+
+                override fun onSubscribe(d: Disposable?) {
+                    disposables.add(d)
+                }
+
+                override fun onNext(t: Long?) {
+                    listener?.onSuccess(t!!)
+                }
+
+                override fun onError(e: Throwable?) {
+                    listener?.onError(e!!)
+                }
+
+            })
     }
 
     fun finish() {

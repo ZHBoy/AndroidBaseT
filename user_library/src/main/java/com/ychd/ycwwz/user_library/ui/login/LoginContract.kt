@@ -1,7 +1,7 @@
 package com.ychd.ycwwz.user_library.ui.login
 
 import com.lixg.commonlibrary.data.login.LoginBean
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.mvp.BaseView
 

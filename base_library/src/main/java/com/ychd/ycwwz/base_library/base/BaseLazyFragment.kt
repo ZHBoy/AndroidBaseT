@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.trello.rxlifecycle2.components.support.RxFragment
+import com.trello.rxlifecycle4.components.support.RxFragment
 import com.umeng.analytics.MobclickAgent
 import com.ychd.ycwwz.base_library.utils.TLog
 import org.greenrobot.eventbus.EventBus

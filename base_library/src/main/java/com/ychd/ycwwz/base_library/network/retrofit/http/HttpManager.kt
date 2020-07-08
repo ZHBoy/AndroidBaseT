@@ -1,33 +1,25 @@
 package com.ychd.ycwwz.base_library.network.retrofit.http
 
 import android.content.Context
+import com.trello.rxlifecycle4.android.ActivityEvent
+import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
 import com.ychd.ycwwz.base_library.network.retrofit.ApiConstants
 import com.ychd.ycwwz.base_library.network.retrofit.callback.ApiBodyResponse
 import com.ychd.ycwwz.base_library.network.retrofit.callback.ApiResponse
 import com.ychd.ycwwz.base_library.network.retrofit.callback.HttpOnNextListener
 import com.ychd.ycwwz.base_library.network.retrofit.callback.HttpOnNextResponseListener
-import com.ychd.ycwwz.base_library.network.retrofit.http.interceptor.PublicParamsInterceptor2
-import com.trello.rxlifecycle2.android.ActivityEvent
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
-import com.ychd.ycwwz.base_library.BaseApplication
-import com.ychd.ycwwz.base_library.network.retrofit.http.interceptor.ThreeServiceErrorInterceptor
 import com.ychd.ycwwz.base_library.utils.TLog
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MediaType
-import okhttp3.OkHttpClient
 import okhttp3.RequestBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.net.Proxy
-import java.util.concurrent.TimeUnit
-import javax.net.ssl.HostnameVerifier
-import javax.net.ssl.SSLSession
 
 /**
  * @author : HaoBoy
@@ -200,7 +192,7 @@ class HttpManager private constructor() {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .baseUrl(baseUrl ?: ApiConstants.BASE_URL)
 
         return retrofitBuilder

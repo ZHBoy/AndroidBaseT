@@ -2,7 +2,7 @@ package com.ychd.ycwwz.base_library.network.retrofit.callback
 
 import com.ychd.ycwwz.base_library.network.retrofit.exception.ApiErrorModel
 import com.ychd.ycwwz.base_library.utils.ToastUtil
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 /**
  *@author : HaoBoy
@@ -24,6 +24,7 @@ abstract class HttpOnNextListener {
     abstract fun onNext(json: String)
 
     open fun onSubscribe(disposable: Disposable?) {
+
     }
 
 }
