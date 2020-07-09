@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -14,10 +15,16 @@
 
     <View style="@style/bg_line" />
 
-    <include
-        layout="@layout/activity_main_bottom"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_55" />
-
+        android:layout_height="wrap_content"
+        app:itemBackground="@color/white"
+        app:itemIconSize="@dimen/dp_24"
+        app:itemTextAppearanceActive="@style/Active"
+        app:itemTextAppearanceInactive="@style/Inactive"
+        app:itemTextColor="@drawable/main_bottom_item_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navi" />
 
 </LinearLayout>

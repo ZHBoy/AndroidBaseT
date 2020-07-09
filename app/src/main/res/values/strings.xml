@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">但是粉丝地方</string>
+    <string name="app_name">有财玩玩赚</string>
+
+    <string name="main_tab_home">游戏</string>
+    <string name="main_tab_welfare">福利</string>
+    <string name="main_tab_task">任务</string>
 </resources>

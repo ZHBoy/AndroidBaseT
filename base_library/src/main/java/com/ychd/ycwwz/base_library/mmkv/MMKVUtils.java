@@ -1,4 +1,4 @@
-package com.ychd.ycwwz.base_library.utils;
+package com.ychd.ycwwz.base_library.mmkv;
 
 import android.os.Parcelable;
 

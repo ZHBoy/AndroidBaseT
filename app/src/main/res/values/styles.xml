@@ -1,3 +1,11 @@
 <resources>
+    <style name="Active" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/dp_12</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Inactive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/dp_12</item>
+    </style>
 
 </resources>

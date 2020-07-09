@@ -8,6 +8,7 @@ import com.tencent.mmkv.MMKV
 import com.ychd.ycwwz.adlibrary.ttad.ConstantTt
 import com.ychd.ycwwz.adlibrary.ttad.TTAdManagerHolder
 import com.ychd.ycwwz.base_library.BaseApplication
+import com.ychd.ycwwz.base_library.mmkv.MMKVUtils
 import com.ychd.ycwwz.provider_library.router.common.provider.ISplashApplicationProvider
 
 /**
@@ -36,6 +37,7 @@ class YcwwzApplication: BaseApplication(){
 
         //腾讯mmkv
         MMKV.initialize(this)
+        MMKVUtils.getInstance()
 
     }
 }

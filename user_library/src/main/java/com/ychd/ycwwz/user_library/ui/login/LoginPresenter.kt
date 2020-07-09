@@ -11,12 +11,10 @@ import com.ychd.ycwwz.base_library.network.retrofit.exception.ApiErrorModel
 import com.ychd.ycwwz.base_library.network.retrofit.http.HttpManager
 import com.ychd.ycwwz.base_library.network.retrofit.http.RequestOption
 import com.ychd.ycwwz.base_library.utils.DevicesUtils
-import com.ychd.ycwwz.base_library.utils.SPUtils
+import com.ychd.ycwwz.base_library.mmkv.MMKVUtils
 import com.ychd.ycwwz.base_library.utils.ToastUtil
-import com.ychd.ycwwz.provider_library.router.common.IntentData
 import com.ychd.ycwwz.provider_library.router.common.RouterApi
 import com.ychd.ycwwz.user_library.service.AccountService
-import org.jetbrains.anko.intentFor
 import retrofit2.Response
 
 /**
@@ -58,13 +56,13 @@ class LoginPresenter(val view: LoginContract.View) : LoginContract.Presenter {
                                 val d = h.values("authorization")
                                 AccessManager.setUserAuthorization(d[0])
 
-                                SPUtils.setObject(SpDef.USER_UID, it.userId ?: "")
-                                SPUtils.setObject(SpDef.USER_PHONE, it.phone ?: "")
-                                SPUtils.setObject(SpDef.USER_NICK_NAME, it.nickname ?: "")
-                                SPUtils.setObject(SpDef.USER_TYPE, it.userType ?: "")
-                                SPUtils.setObject(SpDef.USER_OPEN_ID, it.openId ?: "")
-                                SPUtils.setObject(SpDef.USER_HEAD_IMAGE, it.headImageUrl ?: "")
-                                SPUtils.setObject(SpDef.USER_CREAT_TIME, it.createTime ?: "")
+                                MMKVUtils.encode(SpDef.USER_UID, it.userId ?: "")
+                                MMKVUtils.encode(SpDef.USER_PHONE, it.phone ?: "")
+                                MMKVUtils.encode(SpDef.USER_NICK_NAME, it.nickname ?: "")
+                                MMKVUtils.encode(SpDef.USER_TYPE, it.userType ?: "")
+                                MMKVUtils.encode(SpDef.USER_OPEN_ID, it.openId ?: "")
+                                MMKVUtils.encode(SpDef.USER_HEAD_IMAGE, it.headImageUrl ?: "")
+                                MMKVUtils.encode(SpDef.USER_CREAT_TIME, it.createTime ?: "")
 
                                 val createTime =
                                     System.currentTimeMillis() - (it.createTime ?: "0").toLong()

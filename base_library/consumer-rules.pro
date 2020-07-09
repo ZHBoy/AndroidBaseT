@@ -16,6 +16,9 @@
 -keep class com.ychd.ycwwz.base_library.event.** { *; }
 -keep class com.ychd.ycwwz.base_library.network.** { *; }
 
+# mmkv不被混淆
+-keep class com.ychd.ycwwz.base_library.mmkv.** { *; }
+
 # --------- 微信 ---------
 -keep class com.tencent.mm.opensdk.** {
     *;

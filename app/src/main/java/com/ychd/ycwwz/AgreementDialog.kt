@@ -16,8 +16,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.ychd.ycwwz.R
 import com.ychd.ycwwz.base_library.IntentDataDef
 import com.ychd.ycwwz.base_library.utils.DisplayUtil
+import com.ychd.ycwwz.base_library.mmkv.MMKVUtils
 import com.ychd.ycwwz.base_library.utils.MyLinkedMovementMethod
-import com.ychd.ycwwz.base_library.utils.SPUtils
 import com.ychd.ycwwz.base_library.utils.ToastUtil
 import com.ychd.ycwwz.provider_library.router.common.RouterApi
 
@@ -89,7 +89,8 @@ open class AgreementDialog : Dialog {
             systemDialog!!.setCancelable(cancelable)
             systemDialog!!.btnAgreementContent!!.setOnClickListener { v ->
                 //本地存储
-                SPUtils.setObject(SPUtils.BROKER_SHARED_DATA_NOT_CLEAR, "agreement", 1)
+                //todo 跟随设备存储
+                MMKVUtils.encode("agreement", 1)
                 systemDialog!!.dismiss()
             }
 

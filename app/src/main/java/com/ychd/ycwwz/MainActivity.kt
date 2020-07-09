@@ -1,33 +1,29 @@
 package com.ychd.ycwwz
 
 import android.content.Intent
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ychd.weather.AgreementDialog
 import com.ychd.ycwwz.base_library.base.BaseActivity
 import com.ychd.ycwwz.base_library.base.CustomFragmentStatePagerAdapter
 import com.ychd.ycwwz.base_library.data.AppUpdateBean
 import com.ychd.ycwwz.base_library.event.main.MainActivitySwitchEvent
-import com.ychd.ycwwz.base_library.extend.OnLazyClickListener
+import com.ychd.ycwwz.base_library.mmkv.MMKVUtils
 import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.presenter.CommonPresenter
-import com.ychd.ycwwz.base_library.utils.SPUtils
 import com.ychd.ycwwz.base_library.widgets.AppUpdateDialog
 import com.ychd.ycwwz.provider_library.router.common.RouterApi
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main_bottom.*
 import org.greenrobot.eventbus.Subscribe
 import org.jetbrains.anko.toast
 
 @Route(path = RouterApi.MainLibrary.ROUTER_MAIN_URL)
-class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClickListener {
+class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
     private var mFragments: ArrayList<Fragment> = ArrayList()
-    // 上一次选择的 tab
-    private var mPreSelectTab: View? = null
     private var mAgreementDialog: AgreementDialog? = null
 
     private var mCommonPresenter: CommonPresenter? = null
@@ -41,6 +37,8 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
     }
 
     override fun init() {
+        //去掉背景色
+        navigationBar.itemIconTintList = null
         //设置底部栏
         setTabLayout()
         initApi()
@@ -63,7 +61,8 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
 
     override fun onResume() {
         super.onResume()
-        if (SPUtils.getObjectForKey(SPUtils.BROKER_SHARED_DATA_NOT_CLEAR, "agreement", 0) == 0) {
+        //todo 跟随设备存储
+        if (MMKVUtils.decodeInt("agreement") ?: 0 == 0) {
             if (mAgreementDialog?.isShowing == true) {
                 return
             }
@@ -104,7 +103,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
         mFragments.add(FragmentDemo.newInstance())
         mFragments.add(FragmentDemo2.newInstance())
         mFragments.add(FragmentDemo3.newInstance())
-        mFragments.add(FragmentDemo4.newInstance())
 
         val mainAdapter = CustomFragmentStatePagerAdapter(
             supportFragmentManager,
@@ -117,42 +115,44 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
         mainVp.addOnPageChangeListener(this)
 
         mainVp.currentItem = 0
-        rl_main_weather.isSelected = true
         mainVp.offscreenPageLimit = mFragments.size
-
-        rl_main_weather.setOnClickListener(this)
-        rl_main_welfare.setOnClickListener(this)
-        rl_main_person.setOnClickListener(this)
-        rl_activity.setOnClickListener(this)
 
     }
 
     override fun logic() {
-        //是否显示福利小红点
+        navigationBar?.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-    override fun onStart() {
-        super.onStart()
+    private val mOnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.main_home -> {
+                    val fragmentIndex = MainActivitySwitchEvent.HOME_FRAGMENT_INDEX
+                    mainVp.currentItem = fragmentIndex
 
-    }
+                    return@OnNavigationItemSelectedListener true
+                }
 
-    override fun onLazyClick(v: View) {
-        when (v.id) {
-            R.id.rl_main_weather -> {
-                mainVp.currentItem = MainActivitySwitchEvent.WEATHER_FRAGMENT_INDEX
+                R.id.main_welfare -> {
+                    val fragmentIndex = MainActivitySwitchEvent.WELFARE_FRAGMENT_INDEX
+                    mainVp.currentItem = fragmentIndex
+
+                    return@OnNavigationItemSelectedListener true
+                }
+
+                R.id.main_task -> {
+                    val fragmentIndex = MainActivitySwitchEvent.TASL_FRAGMENT_INDEX
+                    mainVp.currentItem = fragmentIndex
+
+                    return@OnNavigationItemSelectedListener true
+                }
+
+                else -> {
+                }
             }
-            R.id.rl_main_welfare -> {
-                mainVp.currentItem = MainActivitySwitchEvent.WELFARE_FRAGMENT_INDEX
-            }
-            R.id.rl_main_person -> {
-                mainVp.currentItem = MainActivitySwitchEvent.MINE_FRAGMENT_INDEX
-            }
-            R.id.rl_activity -> {
-                mainVp.currentItem = MainActivitySwitchEvent.ACTIVITY_FRAGMENT_INDEX
-            }
+            false
         }
 
-    }
 
     override fun onPageScrollStateChanged(state: Int) {
     }
@@ -161,45 +161,22 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
     }
 
     override fun onPageSelected(position: Int) {
-        if (mPreSelectTab != null) {
-            mPreSelectTab!!.isSelected = false
-        }
-        when (position) {
-            MainActivitySwitchEvent.WEATHER_FRAGMENT_INDEX -> {
-                rl_main_weather.isSelected = true
-                mPreSelectTab = rl_main_weather
-            }
-            MainActivitySwitchEvent.WELFARE_FRAGMENT_INDEX -> {
-                rl_main_welfare.isSelected = true
-                mPreSelectTab = rl_main_welfare
-            }
-            MainActivitySwitchEvent.MINE_FRAGMENT_INDEX -> {
-                rl_main_person.isSelected = true
-                mPreSelectTab = rl_main_person
-            }
-            MainActivitySwitchEvent.ACTIVITY_FRAGMENT_INDEX -> {
-                rl_activity.isSelected = true
-                mPreSelectTab = rl_activity
-            }
-            else -> {
-            }
-        }
-
+        navigationBar.selectedItemId =
+            navigationBar.menu.getItem(position).itemId
     }
+
 
     /**
      * 切换 fragment
      */
     @Subscribe
     fun switchFragment(mainActivitySwitchEvent: MainActivitySwitchEvent) {
-        if (mPreSelectTab != null) {
-            mPreSelectTab!!.isSelected = false
-        }
+
         val fragmentIndex = mainActivitySwitchEvent.fragmentIndex
         mainVp.currentItem = fragmentIndex
-        val childView = llBottomRooter.getChildAt(fragmentIndex)
-        childView.isSelected = true
-        mPreSelectTab = childView
+
+        navigationBar.selectedItemId =
+            navigationBar.menu.getItem(fragmentIndex).itemId
     }
 
     //记录用户首次点击返回键的时间
@@ -218,7 +195,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, OnLazyClick
         super.onDestroy()
         mAgreementDialog?.dismiss()
         mAgreementDialog = null
-        mPreSelectTab = null
     }
 
 }
