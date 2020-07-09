@@ -89,7 +89,7 @@ public class DownLoadApkUtil {
             //    });
             //} else
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {//判断版本大于等于7.0
-                data = FileProvider.getUriForFile(context, "com.lixg.hcalendar.NFileProvider", file);
+                data = FileProvider.getUriForFile(context, "com.ychd.ycwwz.NFileProvider", file);
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);// 给目标应用一个临时授权
                 intent.setDataAndType(data, "application/vnd.android.package-archive");
                 context.startActivity(intent);

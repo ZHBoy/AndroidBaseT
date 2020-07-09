@@ -1,4 +1,4 @@
-package com.ychd.weather.user_library
+package com.ychd.ycwwz.user_library
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

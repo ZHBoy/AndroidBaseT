@@ -32,7 +32,6 @@
         android:maxLines="1"
         android:paddingStart="@dimen/dp_60"
         android:paddingEnd="@dimen/dp_60"
-        android:text="今日简讯：A股全面大涨无敌无敌无敌无敌"
         android:textColor="@color/black"
         android:textSize="@dimen/dp_18"
         app:layout_constraintBottom_toBottomOf="@+id/rlToolbar"
@@ -51,8 +50,7 @@
         android:id="@+id/flVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="横屏显示视频"
+        android:contentDescription="@string/screen_video"
         android:visibility="gone" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

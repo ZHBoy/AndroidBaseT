@@ -1,4 +1,4 @@
-package com.lixg.commonlibrary.data.login
+package com.ychd.commonlibrary.data.login
 
 import java.io.Serializable
 

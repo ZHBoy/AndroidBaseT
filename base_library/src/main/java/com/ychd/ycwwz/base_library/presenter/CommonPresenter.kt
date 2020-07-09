@@ -96,9 +96,6 @@ class CommonPresenter : ICommon.Presenter {
 
                         CommonDef.CONTROL_TO_LOGIN_CLOSE_IS_SHOW =
                             resultEntity.data?.control_to_login_close_is_show ?: 0
-                        CommonDef.weather_app_download_url =
-                            resultEntity.data?.weather_app_download_url
-                        CommonDef.weather_app_share_url = resultEntity.data?.weather_app_share_url
                         CommonDef.maxTime = (resultEntity.data?.watch_video_time as Int) * 1000
                         CommonDef.maxWatchTime = resultEntity.data?.integral_egg_show_time!!
                         CommonDef.drawCountdownTime = resultEntity.data?.read_news_award_time!! * 60

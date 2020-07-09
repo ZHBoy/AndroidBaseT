@@ -21,15 +21,8 @@ object CommonDef {
     //浏览淘宝模块多少秒（默认60），获取抽奖机会次数
     var WATCH_TAOBAO_GET_LOTTERY_NUMBER = 1
 
-    //天气下载链接
-    val weatherYybLink = "https://sj.qq.com/myapp/detail.htm?apkName=com.ychd.weather"
     //转动的秒数
     var RCIRCLE_NUM = 0
-    //微信appid
-    const val WX_APP_ID = "wxb13120b26cceefe0"
-
-    //微信小程序ID
-    const val WX_MINI_ID = "gh_a646e7b5f8b6"
 
     //客服电话
     const val HELPER_PHONE = "18611442728"

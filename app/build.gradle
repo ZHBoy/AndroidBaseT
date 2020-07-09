@@ -71,8 +71,7 @@ android {
     }
 
     productFlavors {
-        demo {}
-        yctq {}
+        ycwwz {}
         yingyongbao {}
         xiaomi {}
         oppo {}
@@ -115,35 +114,14 @@ dependencies {
     // 开屏模块
     api project(':splash_library')
 
-
-    // 用户中心模块
+    // 用户模块
     if (!UserCenterDebug.toBoolean()) {
         api project(':user_library')
     }
 
-    // 天气模块
+    // 游戏模块
     if (!GameDebug.toBoolean()) {
         api project(':game_library')
     }
-//
-//    // 天气模块
-//    if (!WelfareDebug.toBoolean()) {
-//        api project(':welfare_library')
-//    }
-//
-//    // 活动模块
-//    if (!ActivityDebug.toBoolean()) {
-//        api project(':activity_library')
-//    }
-//
-//
-//    api project(':web_library')
-//
-
-//
-//    if(!VideoDebug.toBoolean()){
-//        api project(':video_library')
-//    }
-
 
 }

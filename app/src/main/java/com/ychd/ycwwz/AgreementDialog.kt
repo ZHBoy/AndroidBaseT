@@ -1,4 +1,4 @@
-package com.ychd.weather
+package com.ychd.ycwwz
 
 import android.app.Dialog
 import android.content.Context
@@ -13,7 +13,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.launcher.ARouter
-import com.ychd.ycwwz.R
 import com.ychd.ycwwz.base_library.IntentDataDef
 import com.ychd.ycwwz.base_library.utils.DisplayUtil
 import com.ychd.ycwwz.base_library.mmkv.MMKVUtils
@@ -68,7 +67,6 @@ open class AgreementDialog : Dialog {
 
     }
 
-
     class Builder(private val context: Context) {
 
         private var systemDialog: AgreementDialog? = null
@@ -80,7 +78,6 @@ open class AgreementDialog : Dialog {
             this.cancelable = isCancel
             return this
         }
-
 
         fun build(): AgreementDialog {
             systemDialog =

@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.ychd.weather.AgreementDialog
 import com.ychd.ycwwz.base_library.base.BaseActivity
 import com.ychd.ycwwz.base_library.base.CustomFragmentStatePagerAdapter
 import com.ychd.ycwwz.base_library.data.AppUpdateBean
@@ -38,6 +37,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     }
 
     override fun init() {
+
         //去掉背景色
         navigationBar.itemIconTintList = null
         //设置底部栏

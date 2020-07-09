@@ -1,4 +1,4 @@
-package com.ychd.weather.splash_library
+package com.ychd.ycwwz.splash_library
 
 import org.junit.Test
 

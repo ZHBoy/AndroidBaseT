@@ -1,7 +1,7 @@
 package com.ychd.ycwwz.user_library.ui.login
 
 import com.alibaba.android.arouter.launcher.ARouter
-import com.lixg.commonlibrary.data.login.LoginBean
+import com.ychd.commonlibrary.data.login.LoginBean
 import com.ychd.ycwwz.base_library.constants.AccessManager
 import com.ychd.ycwwz.base_library.constants.SpDef
 import com.ychd.ycwwz.base_library.extend.fromJson
