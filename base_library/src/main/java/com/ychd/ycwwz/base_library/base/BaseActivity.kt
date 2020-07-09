@@ -9,8 +9,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
-import com.umeng.analytics.MobclickAgent
-import com.umeng.message.PushAgent
 import org.greenrobot.eventbus.EventBus
 
 /**
@@ -28,10 +26,10 @@ abstract class BaseActivity : RxAppCompatActivity() {
 //        StatusToolUtils.setTranslucent(window, false)
         init()
         logic()
-        PushAgent.getInstance(this).onAppStart()
 
         if (isRegisterEventBus())
             EventBus.getDefault().register(this)
+
     }
 
     abstract fun resLayout(): Int
@@ -63,16 +61,6 @@ abstract class BaseActivity : RxAppCompatActivity() {
      */
     protected open fun isRegisterEventBus(): Boolean {
         return false
-    }
-
-    override fun onResume() {
-        super.onResume()
-        MobclickAgent.onResume(this)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        MobclickAgent.onPause(this)
     }
 
     override fun onDestroy() {

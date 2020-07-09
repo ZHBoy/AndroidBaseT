@@ -34,7 +34,6 @@ class YcwwzApplication: BaseApplication(){
         GlobalSetting.setEnableMediationTool(true)
         AdView.setAppSid(this, "b6050625")
 
-
         //腾讯mmkv
         MMKV.initialize(this)
         MMKVUtils.getInstance()

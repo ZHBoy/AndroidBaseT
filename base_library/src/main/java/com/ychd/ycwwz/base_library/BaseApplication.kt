@@ -104,7 +104,7 @@ open class BaseApplication : MultiDexApplication() {
         //统计SDK是否支持采集在子进程中打点的自定义事件，默认不支持
         UMConfigure.setProcessEvent(true)
         // 选用AUTO页面采集模式
-//        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO)
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO)
         //友盟log
         UMConfigure.setLogEnabled(debugging)
         //友盟的错误统计（开发模式下关闭）
