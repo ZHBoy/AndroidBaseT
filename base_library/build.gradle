@@ -132,6 +132,7 @@ dependencies {
 
     api 'jp.wasabeef:glide-transformations:4.0.0'
 
+    // 腾讯key-value框架
     api 'com.tencent:mmkv-static:1.2.1'
 
 
