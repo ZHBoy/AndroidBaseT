@@ -15,6 +15,7 @@ import com.ychd.ycwwz.base_library.mmkv.MMKVUtils
 import com.ychd.ycwwz.base_library.mvp.BasePresenter
 import com.ychd.ycwwz.base_library.presenter.CommonPresenter
 import com.ychd.ycwwz.base_library.widgets.AppUpdateDialog
+import com.ychd.ycwwz.game_library.ui.GameFragment
 import com.ychd.ycwwz.provider_library.router.common.RouterApi
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.Subscribe
@@ -100,7 +101,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     }
 
     private fun setTabLayout() {
-        mFragments.add(FragmentDemo.newInstance())
+        mFragments.add(GameFragment.newInstance())
         mFragments.add(FragmentDemo2.newInstance())
         mFragments.add(FragmentDemo3.newInstance())
 

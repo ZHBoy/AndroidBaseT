@@ -3,8 +3,8 @@ package com.ychd.ycwwz.web_library.webview
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.webkit.WebChromeClient
-import com.ychd.hweather.web_library.R
 import com.ychd.ycwwz.base_library.BaseApplication
+import com.ychd.ycwwz.web_library.R
 
 /**
  * @author zhou_hao

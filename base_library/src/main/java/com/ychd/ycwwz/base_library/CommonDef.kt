@@ -9,6 +9,9 @@ import com.ychd.ycwwz.base_library.utils.DateUtils
  **/
 object CommonDef {
 
+    //游戏sdk的首页URL地址
+    var game_web_url = "https://ai.m.taobao.com/"
+
     //去登录x号是否可以关闭
     var CONTROL_TO_LOGIN_CLOSE_IS_SHOW = 0
 

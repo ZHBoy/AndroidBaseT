@@ -11,13 +11,12 @@ import android.text.TextUtils
 import android.view.View
 import android.view.WindowManager
 import android.webkit.*
-import com.ychd.hweather.web_library.R
-import com.ychd.ycwwz.web_library.webview.JsInterface
+ import com.ychd.ycwwz.web_library.webview.JsInterface
 import com.ychd.ycwwz.base_library.CommonDef
 import com.ychd.ycwwz.base_library.IntentDataDef
 import com.ychd.ycwwz.base_library.base.BaseActivity
-import com.ychd.ycwwz.base_library.utils.StatusToolUtils
 import com.ychd.ycwwz.base_library.widgets.LoadingDialog
+import com.ychd.ycwwz.web_library.R
 import com.ychd.ycwwz.web_library.webview.CustomWebCromeClient
 import com.ychd.ycwwz.web_library.webview.WebDataDef
 import kotlinx.android.synthetic.main.activity_web_view_common.*
@@ -118,7 +117,6 @@ class CommonWebActivity : BaseActivity(), View.OnClickListener {
     override fun logic() {
         toolbarBackIv.setOnClickListener(this)
     }
-
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)

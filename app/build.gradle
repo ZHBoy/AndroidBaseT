@@ -61,7 +61,7 @@ android {
         }
 
         debug {
-            minifyEnabled false
+            minifyEnabled true
             debuggable true
 
             signingConfig signingConfigs.myConfig
@@ -121,10 +121,10 @@ dependencies {
         api project(':user_library')
     }
 
-//    // 天气模块
-//    if (!WeatherDebug.toBoolean()) {
-//        api project(':weather_library')
-//    }
+    // 天气模块
+    if (!GameDebug.toBoolean()) {
+        api project(':game_library')
+    }
 //
 //    // 天气模块
 //    if (!WelfareDebug.toBoolean()) {

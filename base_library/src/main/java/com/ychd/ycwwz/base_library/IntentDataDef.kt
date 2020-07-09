@@ -10,6 +10,9 @@ object IntentDataDef {
     //webview的跳转连接
     const val INTENT_WEB_COMMON_URL_KEY = "INTENT_WEB_COMMON_URL_KEY"
 
+    //webview的跳转连接
+    const val INTENT_WEB_GAME_DETAIL_URL_KEY = "INTENT_WEB_GAME_DETAIL_URL_KEY"
+
     //是否展示听不栏
     const val INTENT_WEB_IS_SHOW_TOOL_BAR = "INTENT_WEB_IS_SHOW_TOOL_BAR"
 

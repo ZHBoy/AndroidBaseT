@@ -44,7 +44,6 @@ import com.ychd.ycwwz.splash_library.service.data.SplashBean
 import kotlinx.android.synthetic.main.activity_splash.*
 import kotlin.math.roundToInt
 
-
 /**
  * 工程的入口
  */
@@ -114,8 +113,6 @@ class SplashActivity : BaseActivity(), OnLazyClickListener, SplashContract.View 
     override fun init() {
 
         SplashPresenter(this)
-
-        mCommonPresenter = CommonPresenter()
 
         //todo 用户退出
         tvVersion?.text = "v${BuildConfig.VERSION_NAME}"
