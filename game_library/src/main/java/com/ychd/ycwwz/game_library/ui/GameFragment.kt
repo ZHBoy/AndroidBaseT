@@ -3,23 +3,18 @@ package com.ychd.ycwwz.game_library.ui
 import android.content.pm.ActivityInfo
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.text.TextUtils
 import android.view.View
 import android.webkit.WebResourceError
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.trello.rxlifecycle4.components.support.RxAppCompatActivity
-import com.ychd.ycwwz.base_library.BaseApplication
 import com.ychd.ycwwz.base_library.CommonDef
-import com.ychd.ycwwz.base_library.base.BaseActivity
 import com.ychd.ycwwz.base_library.base.BaseLazyFragment
 import com.ychd.ycwwz.base_library.extend.OnLazyClickListener
 import com.ychd.ycwwz.base_library.utils.TLog
 import com.ychd.ycwwz.base_library.widgets.LoadingDialog
 import com.ychd.ycwwz.game_library.R
-import com.ychd.ycwwz.provider_library.router.common.RouterApi
 import com.ychd.ycwwz.web_library.webview.CustomWebCromeClient
 import com.ychd.ycwwz.web_library.webview.JsInterface
 import kotlinx.android.synthetic.main.game_fragment_layout.*
@@ -33,7 +28,8 @@ class GameFragment : BaseLazyFragment(), OnLazyClickListener {
 
     override fun layoutResId(): Int = R.layout.game_fragment_layout
 
-    private var isLoadFinish = false
+    //控制能否跳转二级页面
+    private var isCanClickToGameActivity = false
 
     override fun onFirstVisible() {
         super.onFirstVisible()
@@ -53,24 +49,51 @@ class GameFragment : BaseLazyFragment(), OnLazyClickListener {
     }
 
     /**
+     * 控制跳到二级页面
+     */
+    private fun setLinkEvent(url: String?): Boolean {
+        if (url.isNullOrBlank()) {
+            isCanClickToGameActivity = true
+            return false
+        }
+
+        if (isCanClickToGameActivity && url.startsWith(CommonDef.game_web_url).not()) {
+            GameActivity.startGameActivity(requireActivity(), url)
+            return true
+        }
+        isCanClickToGameActivity = true
+        return false
+    }
+
+
+    /**
+     * 判断webview是否可以 回退
+     */
+    fun getWebViewIsCanBack(): Boolean {
+        return if (gameCommonWebView != null && gameCommonWebView.canGoBack()) {
+            gameCommonWebView.goBack()
+            isCanClickToGameActivity = false
+            true
+        } else {
+            false
+        }
+    }
+
+
+    /**
      * 设置WebViewClient
      */
     private fun setWebViewClient() {
         gameCommonWebView.webViewClient = object : WebViewClient() {
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                LoadingDialog.show(
-                    requireActivity(),
-                    ""
-                )
                 super.onPageStarted(view, url, favicon)
+                TLog.i("GameFragment-> onPageStarted:$url")
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                LoadingDialog.dismiss()
                 TLog.i("GameFragment-> onPageFinished:$url")
-                isLoadFinish = true
             }
 
             //无网时调用
@@ -84,18 +107,19 @@ class GameFragment : BaseLazyFragment(), OnLazyClickListener {
                 LoadingDialog.dismiss()
             }
 
+            //适配低版本
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                TLog.i("GameFragment-> shouldOverrideUrlLoading-低版本:$url")
+                return setLinkEvent(url)
+            }
+
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
             ): Boolean {
                 val url = request?.url.toString()
-                TLog.i("GameFragment-> shouldOverrideUrlLoading:$url")
-                if (isLoadFinish && url.startsWith(CommonDef.game_web_url).not()) {
-                    GameActivity.startGameActivity(requireActivity(), request!!.url.toString())
-                    return true
-                }
-                return false
-
+                TLog.i("GameFragment-> shouldOverrideUrlLoading-高版本:$url")
+                return setLinkEvent(url)
             }
 
         }

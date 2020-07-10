@@ -26,7 +26,8 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustPan">
             <!-- <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
 
@@ -66,7 +67,6 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}" />
-
 
         <!--             极光相关配置start            -->
         <activity

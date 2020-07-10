@@ -27,6 +27,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     private var mAgreementDialog: AgreementDialog? = null
 
     private var mCommonPresenter: CommonPresenter? = null
+    private lateinit var mGameFragment: GameFragment
 
     override fun resLayout(): Int {
         return R.layout.activity_main
@@ -101,7 +102,9 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     }
 
     private fun setTabLayout() {
-        mFragments.add(GameFragment.newInstance())
+        mGameFragment = GameFragment.newInstance()
+
+        mFragments.add(mGameFragment)
         mFragments.add(FragmentDemo2.newInstance())
         mFragments.add(FragmentDemo3.newInstance())
 
@@ -184,6 +187,10 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
     private var mExitTime = System.currentTimeMillis()  //为当前系统时间，单位：毫秒
 
     override fun onBackPressed() {
+        if (this::mGameFragment.isInitialized && mGameFragment.getWebViewIsCanBack()) {
+            return
+        }
+
         if (System.currentTimeMillis() - mExitTime < 800) {
             this.finish()   //关闭本活动页面
         } else {
