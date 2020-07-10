@@ -65,7 +65,7 @@
     java.lang.Object readResolve();
 }
 
--keep public class com.ychd.ycwwz.R$*{
+-keep public class com.zhboy.ycwwz.R$*{
     public static final int *;
 }
 

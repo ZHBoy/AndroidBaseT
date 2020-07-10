@@ -72,7 +72,7 @@
             android:layout_marginTop="@dimen/dp_72"
             >
 
-        <com.ychd.ycwwz.base_library.widgets.PasteTwoEditText
+        <com.zhboy.ycwwz.base_library.widgets.PasteTwoEditText
                 android:id="@+id/etVerify1"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -82,7 +82,7 @@
                 style="@style/verify_edittext"
                 />
 
-        <com.ychd.ycwwz.base_library.widgets.PasteTwoEditText
+        <com.zhboy.ycwwz.base_library.widgets.PasteTwoEditText
                 android:id="@+id/etVerify2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -92,7 +92,7 @@
                 android:layout_marginEnd="@dimen/dp_24"
                 />
 
-        <com.ychd.ycwwz.base_library.widgets.PasteTwoEditText
+        <com.zhboy.ycwwz.base_library.widgets.PasteTwoEditText
                 android:id="@+id/etVerify3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -101,7 +101,7 @@
                 android:layout_marginEnd="@dimen/dp_24"
                 />
 
-        <com.ychd.ycwwz.base_library.widgets.PasteTwoEditText
+        <com.zhboy.ycwwz.base_library.widgets.PasteTwoEditText
                 android:id="@+id/etVerify4"
                 android:layout_width="0dp"
                 android:layout_weight="1"

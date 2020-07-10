@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ychd.ycwwz.base_library">
+    package="com.zhboy.ycwwz.base_library">
 
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 

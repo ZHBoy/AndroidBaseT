@@ -1,5 +1,5 @@
 # 保持 R文件不被混淆
--keep public class com.ychd.ycwwz.adlibrary.R$*{
+-keep public class com.zhboy.ycwwz.adlibrary.R$*{
     public static final int *;
 }
 

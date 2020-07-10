@@ -1,23 +1,23 @@
  # 保持 R文件不被混淆
--keep public class com.ychd.ycwwz.base_library.R$*{
+-keep public class com.zhboy.ycwwz.base_library.R$*{
     public static final int *;
 }
 
 # 保持 实体类不被混淆
--keep class com.ychd.ycwwz.base_library.data.** { *; }
--keep class com.ychd.ycwwz.base_library.constants.** { *; }
--keep class com.ychd.ycwwz.base_library.service.body.** { *; }
+-keep class com.zhboy.ycwwz.base_library.data.** { *; }
+-keep class com.zhboy.ycwwz.base_library.constants.** { *; }
+-keep class com.zhboy.ycwwz.base_library.service.body.** { *; }
 
 # 保持 自定义控件不被混淆
-#-keep class com.ychd.ycwwz.base_library.widgets.** { *; }
+#-keep class com.zhboy.ycwwz.base_library.widgets.** { *; }
 
--keep class com.ychd.ycwwz.base_library.wxapi.** { *; }
--keep class com.ychd.ycwwz.base_library.jpush.** { *; }
--keep class com.ychd.ycwwz.base_library.event.** { *; }
--keep class com.ychd.ycwwz.base_library.network.** { *; }
+-keep class com.zhboy.ycwwz.base_library.wxapi.** { *; }
+-keep class com.zhboy.ycwwz.base_library.jpush.** { *; }
+-keep class com.zhboy.ycwwz.base_library.event.** { *; }
+-keep class com.zhboy.ycwwz.base_library.network.** { *; }
 
 # mmkv不被混淆
--keep class com.ychd.ycwwz.base_library.mmkv.** { *; }
+-keep class com.zhboy.ycwwz.base_library.mmkv.** { *; }
 
 # --------- 微信 ---------
 -keep class com.tencent.mm.opensdk.** {

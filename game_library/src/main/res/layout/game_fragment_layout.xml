@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <com.ychd.ycwwz.web_library.webview.CommonWebView
+    <com.zhboy.ycwwz.web_library.webview.CommonWebView
         android:id="@+id/gameCommonWebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

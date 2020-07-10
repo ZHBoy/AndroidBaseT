@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ychd.ycwwz">
+    package="com.zhboy.ycwwz">
 
     <!-- Required -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <permission
-        android:name="com.ychd.ycwwz.permission.JPUSH_MESSAGE"
+        android:name="com.zhboy.ycwwz.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
     <application
         android:name=".YcwwzApplication"
@@ -78,7 +78,7 @@
                 <action android:name="cn.jpush.android.ui.PushActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="com.ychd.ycwwz" />
+                <category android:name="com.zhboy.ycwwz" />
             </intent-filter>
         </activity>
 
@@ -99,7 +99,7 @@
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
             android:name="cn.jpush.android.service.DataProvider"
-            android:authorities="com.ychd.ycwwz.DataProvider"
+            android:authorities="com.zhboy.ycwwz.DataProvider"
             android:exported="false"
             android:process=":pushcore" />
 
@@ -111,7 +111,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="com.ychd.ycwwz" />
+                <category android:name="com.zhboy.ycwwz" />
             </intent-filter>
 
         </service>
@@ -119,7 +119,7 @@
         <!-- since 3.1.0 Required SDK 核心功能-->
         <provider
             android:name="cn.jpush.android.service.DownloadProvider"
-            android:authorities="com.ychd.ycwwz.DownloadProvider"
+            android:authorities="com.zhboy.ycwwz.DownloadProvider"
             android:exported="true" />
 
         <receiver
@@ -127,7 +127,7 @@
             android:enabled="true">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="com.ychd.ycwwz" />
+                <category android:name="com.zhboy.ycwwz" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -160,7 +160,7 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="com.ychd.ycwwz" />
+                <category android:name="com.zhboy.ycwwz" />
             </intent-filter>
         </receiver>
 
@@ -172,7 +172,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.JNotifyActivity" />
-                <category android:name="com.ychd.ycwwz" />
+                <category android:name="com.zhboy.ycwwz" />
             </intent-filter>
         </activity>
         <!-- Since JCore2.0.0 Required SDK核心功能-->
@@ -194,7 +194,7 @@
         <receiver android:name=".base_library.jpush.MyWakedResultReceiver">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.WakedReceiver" />
-                <category android:name="com.ychd.ycwwz" />
+                <category android:name="com.zhboy.ycwwz" />
             </intent-filter>
         </receiver>
 
@@ -211,7 +211,7 @@
         <!-- 穿山甲 start-->
         <provider
             android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="com.ychd.ycwwz.TTFileProvider"
+            android:authorities="com.zhboy.ycwwz.TTFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -220,7 +220,7 @@
         </provider>
         <provider
             android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="com.ychd.ycwwz.TTMultiProvider"
+            android:authorities="com.zhboy.ycwwz.TTMultiProvider"
             android:exported="false" />
 
         <!-- 百度广告sdk -->
@@ -231,7 +231,7 @@
 
         <provider
             android:name="com.baidu.mobads.openad.FileProvider"
-            android:authorities="com.ychd.ycwwz.bd.provider"
+            android:authorities="com.zhboy.ycwwz.bd.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -240,7 +240,7 @@
         </provider>
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.ychd.ycwwz.fileprovider"
+            android:authorities="com.zhboy.ycwwz.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

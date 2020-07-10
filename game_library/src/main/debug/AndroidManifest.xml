@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ychd.ycwwz.game_library">
+    package="com.zhboy.ycwwz.game_library">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->

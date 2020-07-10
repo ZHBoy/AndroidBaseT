@@ -38,7 +38,7 @@
         android:layout_below="@+id/rlToolbar"
         android:background="@color/common_background_f3" />
 
-    <com.ychd.ycwwz.web_library.webview.CommonWebView
+    <com.zhboy.ycwwz.web_library.webview.CommonWebView
         android:id="@+id/wvCommon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -56,7 +56,6 @@
             android:paddingTop="@dimen/dp_10"
             android:paddingEnd="@dimen/dp_30"
             android:paddingBottom="@dimen/dp_10"
-            android:src="@drawable/launchscreen_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

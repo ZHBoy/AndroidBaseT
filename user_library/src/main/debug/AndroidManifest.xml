@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ychd.ycwwz.user_library">
+    package="com.zhboy.ycwwz.user_library">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
@@ -22,7 +22,7 @@
         tools:targetApi="n">
 
 
-        <activity android:name="LoginActivity">
+        <activity android:name=".ui.login.LoginActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,9 +32,11 @@
         </activity>
 
         <activity
-            android:name=".ui.login.LoginPhoneActivity"
+            android:name=".ui.login.LoginVerifyActivity"
             android:launchMode="singleTop" />
-
+        <activity
+            android:name=".ui.login.LoginWithPhoneActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>
